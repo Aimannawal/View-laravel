@@ -4,8 +4,9 @@ Halo kali ini saya akan membantu anda cara view database di laravel
 **Step 1**
 --
 1 . Pastikan anda telah menginstall extension yang kami sarankan untuk mempermudah pengerjaan
-a. laravel blade snippets
-b. laravel snippets
+```
+laravel blade snippets dan laravel snippets
+```
 2 . Jika sudah maka pastikan sudah ada model dan jangan lupa beri protected $fillable pada file model (sesuaikan dengan tabel)
 ```
 protected $fillable = [         
