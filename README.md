@@ -1,56 +1,58 @@
-## Cara Deploy Web Kamu di Ubuntu Server
-Halo kali ini saya akan membantu anda menampilkan view di laravel
+## Cara View Data Pada Database Di Laravel
+Halo kali ini saya akan membantu anda cara view database di laravel
 
 **Step 1**
 --
 1 . Pastikan anda telah menginstall extension yang kami sarankan untuk mempermudah pengerjaan
---
-laravel blade snippets
-laravel snippets
+a. laravel blade snippets
+b. laravel snippets
+2 . Jika sudah maka pastikan sudah ada model dan jangan lupa beri protected $fillable pada file model (sesuaikan dengan tabel)
+```
+protected $fillable = [         
+        'nama',         
+        'kelas',         
+        'alamat',    
+    ];
+```
+3 . buatlah controller 
+```
+php artisan make:controller MahasiswaController -r
+```
+4 . Buka Controller yang baru dibuat
+5 . Gunakan kode ini didalam class index pada controller yang baru saja dibuat
+```
+public function index()
+{
+$Mahasiswa = Mahasiswa::get();
 
-2 . Jika di server anda belum terinstall Apache2 atau Nginx, maka install terlebih dahulu menggunakan command:
+return view('Mahasiswa.index', compact('Mahasiswa'));
+}
 ```
-sudo apt install apache2
+6 . Setelah itu buka file routes/web.php tambahkan kode berikut 
 ```
-3 . Clone repository web anda yang ingin di deploy di Ubuntu Server
+Route::get('/', [MahasiswaController::class, 'index'])->name('Mahasiswa');
+```
+7 . Lalu masuk ke file resources/views/file yang di return view pada Controller tadi
+```
+<table>
+        <thead>
+                <tr>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th>Alamat</th>
+                </tr>
+        </thead>
+        <tbody>
+                @foreach ($Mahasiswa as $item)
+                <tr>
+                <td>{{ $item->name }}</td>
+                <td>{{ $item->kelas }}</td>
+                <td>{{ $item->alamat }}</td>
+                </tr>
+                @endforeach
+        </tbody>
+</table>
+```
+NB: Jangan lupa php artisan serve 
 
-4 . Lalu copy dan paste folder yang telah di clone dan hapus file index.html menggunakan command:
-```
-cp nama_folder /var/www/html
-sudo rm index.html
-```
-5 . Lalu masuk ke dir sites-available menggunakan command:
-```
-cd /etc/apache2/sites-available
-```
-6 . Setelah itu edit file bernama 000-default.conf menggunakan command:
-```
-sudo nano 000-default.conf
-```
-7 . Lalu ubah line berikut 
-```
-ServerName afif.lokal
-        ServerAlias afif.lokal
-        DocumentRoot /var/www/html/TestingDeploy/
-        <Directory /var/www/html/TestingDeploy>
-            Options Indexes FollowSymLinks MultiViews
-            AllowOverride All
-            Require all granted
-        </Directory>
-```
-NB: Anda bisa sesuaikan sesuai dengan nama folder dan file yang ingin anda deploy dibagian setelah /html/
-
-8 . Lalu save dan exit menggunakan ctrl x; y; key enter
-
-9 . Setelah itu gunakan command berikut secara ter-urut
-```
-sudo a2enmod rewrite
-sudo systemctl restart apache2
-```
-10 . Lalu cek status apache2 menggunakan command:
-```
-systemctl status apache2
-```
-11 . Lalu buka di browser kalian mdengan mengetikan ip 127.0.0.1
-
-## Web anda berhasil terdeploy ##
+## Data Anda Berhasil Di Views
