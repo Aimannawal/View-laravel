@@ -1,9 +1,11 @@
 ## Cara Deploy Web Kamu di Ubuntu Server
-Halo kali ini saya akan membuat panduan cara deploy web di Ubuntu Server
+Halo kali ini saya akan membantu anda menampilkan view di laravel
 
 **Step 1**
 --
-1 . Pastikan anda memiliki Ubuntu Server 
+1 . Pastikan anda telah menginstall extension yang kami sarankan untuk mempermudah pengerjaan
+laravel blade snippets
+laravel snippets
 
 2 . Jika di server anda belum terinstall Apache2 atau Nginx, maka install terlebih dahulu menggunakan command:
 ```
