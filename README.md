@@ -4,6 +4,7 @@ Halo kali ini saya akan membantu anda menampilkan view di laravel
 **Step 1**
 --
 1 . Pastikan anda telah menginstall extension yang kami sarankan untuk mempermudah pengerjaan
+--
 laravel blade snippets
 laravel snippets
 
