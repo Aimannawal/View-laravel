@@ -5,7 +5,7 @@ Halo kali ini saya akan membantu anda cara view database di laravel
 --
 1 . Pastikan anda telah menginstall extension yang kami sarankan untuk mempermudah pengerjaan
 ```
-laravel blade snippets dan laravel snippets
+laravel blade snippets, laravel snippet, dan php dari devsense
 ```
 2 . Jika sudah maka pastikan sudah ada model dan jangan lupa beri protected $fillable pada file model (sesuaikan dengan tabel)
 ```
@@ -20,6 +20,8 @@ protected $fillable = [
 php artisan make:controller MahasiswaController -r
 ```
 4 . Buka Controller yang baru dibuat
+```
+```
 5 . Gunakan kode ini didalam class index pada controller yang baru saja dibuat
 ```
 public function index()
